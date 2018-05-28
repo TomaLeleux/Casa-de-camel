@@ -1,4 +1,4 @@
-CAMELNAME = ['Bob','Bab','Bib','Ouali','Wall-e','Case','Leon','John','Albert','Jean','John','Fred','Seb','Claude']
+CAMELNAME = %w(Bob Bab Bib Ouali Walle Case Leon John Albert Jean John Fred Seb Claude)
 
 # 10.times do
 # camel = Camel.create!(
