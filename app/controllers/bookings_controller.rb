@@ -5,15 +5,37 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking).order(created_at: :desc)
   end
 
+  def show
+    @booking = policy_scope(Booking).find(params[:id])
+  end
+
   def new
+    @booking = Booking.new
+    authorize @booking
   end
 
   def create
+    @booking = Booking.new(booking_params)
     authorize @booking
+    @camel = Camel.find(params[:camel_id])
+    @booking.user = current_user
+    if @booking.save
+      redirect_to camel_path(@camel)
+    else
+      render :new
+    end
+  end
+
+  def update
+    authorize @booking
+    @booking.update(booking_params)
+    redirect_to camel_bookings_path(@booking.camel)
   end
 
   def destroy
     authorize @booking
+    @booking.destroy
+    redirect_to camel_bookings_path(@booking.camel)
   end
 
   private
