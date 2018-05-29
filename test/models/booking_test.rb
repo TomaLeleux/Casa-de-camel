@@ -9,6 +9,7 @@
 #  camel_id   :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  status     :string           default("pending")
 #
 
 require 'test_helper'
