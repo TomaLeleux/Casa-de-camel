@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = current_user.bookings.new
+    @booking = Booking.new
     authorize @booking
   end
 
