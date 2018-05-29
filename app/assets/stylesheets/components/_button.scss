@@ -1,0 +1,25 @@
+.cbtn {
+text-decoration: none;
+border: solid 1px;
+border-radius: 4px;
+padding: 6px 16px;
+width: 200px;
+color: white;
+box-shadow: 2px 2px 2px 1px rgba(181, 96, 43, 0.2);
+  &:hover {
+    text-decoration: none;
+    border: solid 1px;
+    color: white;
+    font-size: 1.05em;
+    transition: background-color, 1s;
+  }
+}
+
+.camel {
+  background-color: $camel;
+  &:hover {
+    border-color: $camel-hover;
+    background-color: $camel-hover;
+  }
+}
+
