@@ -29,13 +29,13 @@ class BookingsController < ApplicationController
   def update
     authorize @booking
     @booking.update(booking_params)
-    redirect_to camel_bookings(@booking.camel)
+    redirect_to camel_bookings_path(@booking.camel)
   end
 
   def destroy
     authorize @booking
     @booking.destroy
-    redirect_to camel_bookings(@booking.camel)
+    redirect_to camel_bookings_path(@booking.camel)
   end
 
   private
