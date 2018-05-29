@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     authorize @booking
-    @camel = Camel.find(param[:camel_id])
+    @camel = Camel.find(params[:camel_id])
     @booking.user = current_user
     if @booking.save
       redirect_to camel_path(@camel)
