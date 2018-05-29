@@ -15,6 +15,8 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  photo            :string
+#  price_per_day    :integer
+#  description      :text
 #
 
 require 'test_helper'
