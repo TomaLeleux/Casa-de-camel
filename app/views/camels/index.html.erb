@@ -1,1 +1,14 @@
 <h1>Camels#index</h1>
+
+
+
+<div class="container">
+  <div class="row">
+    <% @camels.each do |camel| %>
+      <%= render 'card', camel: camel %>
+      <%= render 'card', camel: camel %>
+      <%= render 'card', camel: camel %>
+      <%= render 'card', camel: camel %>
+    <% end %>
+  </div>
+</div>
