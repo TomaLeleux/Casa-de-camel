@@ -1,4 +1,42 @@
-<h1>Camels#show</h1>
+<h1><%= @camel.name %></h1>
 
-<hr>
+<div class="grid">
+  <div class="photo">
+    <%= cl_image_tag @camel.photo %>
+  </div>
+  <div class="description">
+    <h3>Description </h3>
+    <%= @camel.description %>
+    <h3>Price / Day </h3>
+
+    <div class="price"> <%= @camel.price_per_day %> $</div>
+  </div>
+  <div class="map">
+    <%= image_tag "http://images.indianexpress.com/2016/11/hazaribagh-759.jpg" %>
+  </div>
+  <div class="carac">
+
+    <i class="fas fa-users"> Places : <%= @camel.number_of_place %> </i>
+    <i class="fab fa-apple"> Food Type: <%= @camel.food_type %></i>
+    <i class="fas fa-paint-brush"> Color: <%= @camel.color %> </i>
+    <% if @camel.wifi %>
+    <i class="fas fa-wifi"> Wifi</i>
+    <% else %>
+    <i class="fas fa-times-circle"> No Wifi </i>
+    <% end %>
+    <i class="fas fa-battery-three-quarters">Fiscal camels : <%= @camel.chameaux_fiscaux %> fc</i>
+    <i class="fab fa-accessible-icon">Max speed : <%= @camel.vitesse_max %> kmh</i>
+  </div>
+  <div class="booking">
+    <label for="start-date">Start date :</label>
+    <input type="text" id="start-date" placeholder="18/06/2018"/>
+    <label for="end-date">End date :</label>
+    <input type="text" id="end-date" placeholder="24/06/2018"/>
+    <div class="total-price">
+      <span> Total = 900 $ </span>
+    </div>
+  </div>
+
+</div>
+
 <%= link_to "Back to the camels", camels_path %>
