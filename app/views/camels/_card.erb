@@ -1,0 +1,14 @@
+<div class="col-xs-12 col-sm-4 col-lg-3">
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path camel.photo, crop: :fill %>');">
+    <div class="card-description">
+      <h2><%= camel.name %></h2>
+      <p><%= camel.description %></p>
+    </div>
+    <% if camel.user.photo.blank? %>
+      <%= image_tag "", class: "card-user fas fa-user", alt: "Default user logo" %>
+    <% else %>
+      <%= cl_image_tag camel.user.photo, class: 'card-user', alt: 'User logo' %>
+    <% end %>
+    <%= link_to '', camel_path(camel), class: 'card-link' %>
+  </div>
+</div>
