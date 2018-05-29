@@ -1,5 +1,9 @@
 <div class="col-xs-12 col-sm-4 col-lg-3">
+  <% if camel.photo.blank? %>
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://img-31.ccm2.net/Kpke-dd9yTMOMgapwF4a400NyuU=/595x/smart/f64ac657eeee4f09a97b1f156ebca6d6/ccmcms-hugo/10559137.png');">
+  <% else %>
   <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path camel.photo, crop: :fill %>');">
+  <% end %>
     <div class="card-description">
       <h2><%= camel.name %></h2>
       <p><%= camel.description %></p>

@@ -1,5 +1,8 @@
 <h1>Camels#index</h1>
 
+<% @camels.each do |camel| %>
+<%= render 'card', camel: camel %>
+<% end %>
 
 <%= link_to "Add a camel", new_camel_path, class: "cbtn camel" %>
 <%= link_to "Edit a camel", "/camels/1/edit" %>
