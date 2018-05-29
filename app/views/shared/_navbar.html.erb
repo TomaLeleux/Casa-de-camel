@@ -13,7 +13,11 @@
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <%= image_tag "http://www.dandwiki.com/w/images/thumb/d/d9/Dariuna.jpg/180px-Dariuna.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% if current_user.nil? || current_user.photo.blank? %>
+        <%= image_tag "", class: "avatar dropdown-toggle fas fa-user",alt:"", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% else %>
+        <%= cl_image_tag current_user.photo, height: 300, width: 400, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% end %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <% if user_signed_in? %>
           <li>
