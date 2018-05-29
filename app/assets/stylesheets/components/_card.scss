@@ -5,12 +5,14 @@
   background-position: center;
   color: white;
   position: relative;
+  margin-bottom: 15px;
 }
 .card-user {
   position: absolute;
   right: 10px;
   top: 10px;
   width: 40px;
+  height: 40px;
   border-radius: 50%;
 }
 .card-category {
