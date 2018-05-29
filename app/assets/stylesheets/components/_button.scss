@@ -15,11 +15,15 @@ box-shadow: 2px 2px 2px 1px rgba(181, 96, 43, 0.2);
   }
 }
 
-.camel {
-  background-color: $camel;
+@mixin btncolor($color) {
+  background-color: $color;
   &:hover {
-    border-color: $camel-hover;
-    background-color: $camel-hover;
+    opacity: 0.9;
+    border-color: $color;
   }
+}
+
+.camel {
+  @include btncolor($camel);
 }
 
