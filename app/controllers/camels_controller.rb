@@ -10,13 +10,19 @@ class CamelsController < ApplicationController
   end
 
   def new
-    @camel = current_user.camels.new
+    @camel = Camel.new
     authorize @camel
   end
 
   def create
-    @camel = current_user.camels.new(camel_params)
+    @camel = Camel.new(camel_params)
     authorize @camel
+    @camel.user = current_user
+    if @camel.save
+      redirect_to camel_path(@camel)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,10 +30,14 @@ class CamelsController < ApplicationController
 
   def update
     authorize @camel
+    @camel.update(camel_params)
+    redirect_to camels_path
   end
 
   def destroy
     authorize @camel
+    @camel.destroy
+    redirect_to camels_path
   end
 
   private
