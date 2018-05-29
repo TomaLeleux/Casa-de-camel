@@ -47,7 +47,7 @@ class CamelsController < ApplicationController
                                   :color, :wifi, :chameaux_fiscaux, :vitesse_max, :photo)
   end
 
-  def set_task
+  def set_camel
     @camel = Camel.find(params[:id])
     authorize @camel
   end
