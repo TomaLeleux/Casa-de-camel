@@ -1,0 +1,48 @@
+<div class="navbar-wagon">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= image_tag "https://static.pratique.fr/images/unsized/ch/chameau.jpg", height: 50 %>
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <!-- Links -->
+
+
+    <!-- Avatar with dropdown menu -->
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <%= image_tag "http://www.dandwiki.com/w/images/thumb/d/d9/Dariuna.jpg/180px-Dariuna.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <% if user_signed_in? %>
+          <li>
+            <%= link_to "/users/sign_out", method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i> <%= t(".logout", default: "Logout") %>
+            <% end %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to "/users/sign_in" do %>
+              <i class="fas fa-sign-in-alt"></i> <%= t(".Login", default: "Login") %>
+            <% end %>
+          </li>
+          <% end %>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dropdown list appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><a href="#">Profil</a></li>
+        <li><a href="#">Booking</a></li>
+        <li><a href="#">Camels</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
