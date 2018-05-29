@@ -26,5 +26,5 @@ vitesse_max: [5,10,15,20,25,30,50,100].sample,
 description: Faker::Lorem.paragraph
 )
 camel.remote_photo_url = url
-camel.save
+camel.save!
 end
