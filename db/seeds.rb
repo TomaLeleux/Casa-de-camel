@@ -19,6 +19,7 @@ food_type: ['Grass','Fruit','Vegetables','Carn'].sample,
 color: ['Red','Blue','Camel','Orange','White','Brown'].sample,
 user: [User.first,User.last].sample,
 wifi: [true,false].sample,
+price_per_day: [10,50,100,125,150].sample,
 chameaux_fiscaux: [4,5,6,7].sample,
 vitesse_max: [5,10,15,20,25,30,50,100].sample
 )
