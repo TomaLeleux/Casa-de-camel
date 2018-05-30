@@ -1,12 +1,13 @@
 class CamelsController < ApplicationController
   before_action :set_camel, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @camels = policy_scope(Camel).order(created_at: :desc)
   end
 
   def show
     @camel = policy_scope(Camel).find(params[:id])
+    @booking = Booking.new
   end
 
   def new
