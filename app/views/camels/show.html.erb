@@ -33,8 +33,8 @@
         <span id="total"></span>
     </div>
       <%= simple_form_for [@camel, @booking] do |f| %>
-        <%= f.input :date_start, as: :date, order: [:day, :month, :year] %>
-        <%= f.input :date_end, as: :date, order: [:day, :month, :year] %>
+        <%= f.input :date_start, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y')} %>
+        <%= f.input :date_end, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y')} %>
         <%= f.submit "Bouc your camel", class: "btn btn-primary" %>
       <% end %>
     <% else %>
