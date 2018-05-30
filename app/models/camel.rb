@@ -17,9 +17,18 @@
 #  photo            :string
 #  price_per_day    :integer
 #  description      :text
-#
+#. address          :text
+#  latitute         :float
+#  longitude.       :float
 
 class Camel < ApplicationRecord
   belongs_to :user
+  has_many :bookings
   mount_uploader :photo, PhotoUploader
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+  validates :name, presence: true, uniqueness: { scope: :user_id, message: 'should not have multiple camels with the same name' }
+  validates :localisation, presence: true, allow_blank: false
+  validates :price_per_day, presence: true
+  validates :description, presence: true
 end
