@@ -1,6 +1,6 @@
 function autocomplete() {
   document.addEventListener("DOMContentLoaded", function() {
-    var searchBar = document.getElementById('search_bar');
+    var searchBar = document.getElementById('camel_address');
 
     if (searchBar) {
       var autocomplete = new google.maps.places.Autocomplete(searchBar, { types: [ 'geocode' ] });
