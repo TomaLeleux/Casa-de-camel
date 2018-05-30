@@ -30,7 +30,7 @@
   <div class="booking">
     <% if user_signed_in? %>
     <div class="total-price">
-        <span> Total = 900 $ </span>
+        <span id="total"></span>
     </div>
       <%= simple_form_for [@camel, @booking] do |f| %>
         <%= f.input :date_start, as: :date, order: [:day, :month, :year] %>

@@ -1,5 +1,25 @@
-<h1>Bookings#index</h1>
+<h1>My booked camels</h1>
 
-<%= link_to "Add a booking", "/camels/1/bookings/new" %>
+<% if @bookings.size.zero? %>
+  <div class="booking">
+    <h2>No booked camel</h2>
+    <%= link_to "Choose a camel", camels_path, class: "cbtn camel" %>
+  </div>
+<% else %>
+  <% @bookings.each do |booking| %>
+      <% date_start = booking.date_start.strftime('%A, %-d %B %Y') %>
+      <% date_end = booking.date_end.strftime('%A, %-d %B %Y') %>
+      <div class="booking">
+        <h2><%= link_to booking.camel.name, camel_path(booking.camel) %> <span class="status <%= booking.status %>"><%= booking.status %></span></h2>
+        <p class="book-date">
+          Start date: <%= date_start %>
+          <br>
+          End date: <%= date_end %>
+        </p>
+      </div>
+  <% end %>
+<% end %>
+
 <hr>
+
 <%= link_to "Back to the index", root_path %>
