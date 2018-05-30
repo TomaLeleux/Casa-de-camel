@@ -22,4 +22,9 @@
 class Camel < ApplicationRecord
   belongs_to :user
   mount_uploader :photo, PhotoUploader
+
+  validates :name, presence: true, uniqueness: { scope: :user_id, message: 'should not have multiple camels with the same name' }
+  validates :localisation, presence: true, allow_blank: false
+  validates :price_per_day, presence: true
+  validates :description, presence: true
 end
