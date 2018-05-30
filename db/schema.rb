@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_095042) do
 
   create_table "camels", force: :cascade do |t|
     t.string "name"
-    t.string "localisation"
+    t.string "country"
     t.integer "number_of_place"
     t.string "food_type"
     t.string "color"
