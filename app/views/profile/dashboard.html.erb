@@ -1,1 +1,30 @@
-<h1>Profile#dashboard</h1>
+<h1>My camels</h1>
+
+<%= link_to "Add a camel", new_camel_path, class: "cbtn camel" %>
+
+<% current_user.camels.each do |camel| %>
+  <div class="my-camel">
+    <h2><%= camel.name %></h2>
+    <%= link_to edit_camel_path(camel), class: 'cbtn btn-primary' do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
+    <div class="bookings">
+      <% if camel.bookings.size.zero? %>
+        <p>No bookings yet for this camel.</p>
+      <% else %>
+        <% camel.bookings.each do |booking| %>
+          <% date_start = booking.date_start.strftime('%A, %-d %B %Y') %>
+          <% date_end = booking.date_end.strftime('%A, %-d %B %Y') %>
+          <div class="booked-user">
+            <h5><%= booking.user.email %> <span class="status <%= booking.status %>"><%= booking.status %></span></h5>
+            <p class="book-date">
+              Start date: <%= date_start %>
+              <br>
+              End date: <%= date_end %>
+            </p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
