@@ -37,6 +37,11 @@
     </div>
   </div>
 
+  <div class="manage">
+    <% if policy(@camel).edit? %>
+      <%= link_to "Edit #{@camel.name}", edit_camel_path, class: "cbtn camel" %>
+    <% end %>
+  </div>
 </div>
 
 <%= link_to "Back to the camels", camels_path %>

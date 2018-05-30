@@ -31,20 +31,21 @@ class CamelsController < ApplicationController
   def update
     authorize @camel
     @camel.update(camel_params)
-    redirect_to camels_path
+    redirect_to camel_path(@camel)
   end
 
   def destroy
     authorize @camel
     @camel.destroy
-    redirect_to camels_path
+    redirect_to root_path
   end
 
   private
 
   def camel_params
-    params.require(:camel).permit(:name, :localisation, :number_of_place, :food_type,
-                                  :color, :wifi, :chameaux_fiscaux, :vitesse_max, :photo)
+    params.require(:camel).permit(:name, :country, :number_of_place, :food_type,
+                                  :color, :wifi, :chameaux_fiscaux, :vitesse_max, :photo,
+                                  :description, :price_per_day)
   end
 
   def set_camel

@@ -1,0 +1,17 @@
+<div class="camel_form">
+  <%= simple_form_for @camel do |f| %>
+    <%= f.input :name, class: "form-control" %>
+    <%= f.input :description %>
+    <%= f.input :country %>
+    <%= f.input :number_of_place %>
+    <%= f.input :food_type, collection: ['Grass','Fruit','Vegetables','Carn'] %>
+    <%= f.input :color, collection: ['Red','Blue','Camel','Orange','White','Brown'] %>
+    <%= f.input :wifi %>
+    <%= f.input :chameaux_fiscaux %>
+    <%= f.input :vitesse_max %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.input :price_per_day %>
+    <%= f.submit "Add a camel", class: "btn btn-primary" %>
+  <% end %>
+</div>
