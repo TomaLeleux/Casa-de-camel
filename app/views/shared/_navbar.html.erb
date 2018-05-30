@@ -26,6 +26,11 @@
             <% end %>
           </li>
           <li>
+            <%= link_to bookings_path do %>
+            <i class="fas fa-address-book"></i> <%= t(".booking", default: "Booking") %>
+            <% end %>
+          </li>
+          <li>
             <%= link_to edit_user_registration_path do %>
               <i class="fas fa-cog"></i> <%= t(".account", default: "Account") %>
             <% end %>
