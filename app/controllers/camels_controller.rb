@@ -58,7 +58,7 @@ class CamelsController < ApplicationController
   def camel_params
     params.require(:camel).permit(:name, :country, :number_of_place, :food_type,
                                   :color, :wifi, :chameaux_fiscaux, :vitesse_max, :photo,
-                                  :description, :price_per_day)
+                                  :description, :price_per_day, :address)
   end
 
   def set_camel
