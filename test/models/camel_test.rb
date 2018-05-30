@@ -4,7 +4,7 @@
 #
 #  id               :bigint(8)        not null, primary key
 #  name             :string
-#  localisation     :string
+#  country          :string
 #  number_of_place  :integer
 #  food_type        :string
 #  color            :string

@@ -9,7 +9,7 @@
       <p><%= camel.description %></p>
     </div>
     <% if camel.user.photo.blank? %>
-      <%= image_tag "", class: "card-user fas fa-user", alt: "Default user logo" %>
+      <i class="card-user fas fa-user"></i>
     <% else %>
       <%= cl_image_tag camel.user.photo, class: 'card-user', alt: 'User logo' %>
     <% end %>
