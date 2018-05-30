@@ -28,7 +28,7 @@ class Camel < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   validates :name, presence: true, uniqueness: { scope: :user_id, message: 'should not have multiple camels with the same name' }
-  validates :localisation, presence: true, allow_blank: false
+  validates :country, presence: true, allow_blank: false
   validates :price_per_day, presence: true
   validates :description, presence: true
 end
