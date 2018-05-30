@@ -31,4 +31,5 @@ class Camel < ApplicationRecord
   validates :country, presence: true, allow_blank: false
   validates :price_per_day, presence: true
   validates :description, presence: true
+  validates :address, presence: true
 end
