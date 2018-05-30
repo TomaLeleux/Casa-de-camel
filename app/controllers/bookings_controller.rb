@@ -21,9 +21,9 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.camel = @camel
     if @booking.save
-      redirect_to camel_path(@camel)
+      redirect_to bookings_path
     else
-      render :new
+      render camel_path(@camel)
     end
   end
 

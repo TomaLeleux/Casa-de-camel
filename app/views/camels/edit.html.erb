@@ -1,6 +1,6 @@
-<h1>Edit a camel</h1>
+<h1 class="text-center">Edit a camel</h1>
 
 <%= render 'form', camel: @camel %>
-
-<hr>
-<%= link_to "Back to the camels", camels_path %>
+<div class="back text-center">
+  <%= link_to "Back to the camels", camels_path, class: "cbtn camel" %>
+</div>

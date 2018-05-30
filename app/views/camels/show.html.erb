@@ -49,11 +49,14 @@
     <% end %>
   </div>
 
-  <div class="edit_camel">
-    <% if policy(@camel).edit? %>
-      <%= link_to "Edit #{@camel.name}", edit_camel_path, class: "cbtn camel" %>
-    <% end %>
+  <div>
+    <div class="edit_camel">
+      <% if policy(@camel).edit? %>
+        <%= link_to "Edit #{@camel.name}", edit_camel_path, class: "cbtn camel" %>
+      <% end %>
+    </div>
+    <div id="back">
+      <%= link_to "Back to the camels", camels_path, id: "back", class: "cbtn camel" %>
+    </div>
   </div>
 </div>
-
-<%= link_to "Back to the camels", camels_path %>
