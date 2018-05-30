@@ -1,9 +1,13 @@
-<h1>Camehamemel</h1>
 
+<h1>Camehamemel</h1>
+<div class="search-bar">
+  <input type="text" id="search_bar"></input>
+</div>
+<div>
 <% @camels.each do |camel| %>
 <%= render 'card', camel: camel %>
 <% end %>
-
+</div>
 <div
   id="map"
   style="width: 100%;
