@@ -1,0 +1,20 @@
+.status {
+  font-size: 22px;
+}
+
+.pending {
+  opacity: 0.5;
+}
+
+.validated {
+  color: $green;
+}
+
+.declined {
+  color: $red;
+}
+
+.book-date {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
