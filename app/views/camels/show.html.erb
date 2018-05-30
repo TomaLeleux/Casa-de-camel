@@ -28,13 +28,25 @@
     <i class="fab fa-accessible-icon">Max speed : <%= @camel.vitesse_max %> kmh</i>
   </div>
   <div class="booking">
-    <label for="start-date">Start date :</label>
-    <input type="text" id="start-date" placeholder="18/06/2018"/>
-    <label for="end-date">End date :</label>
-    <input type="text" id="end-date" placeholder="24/06/2018"/>
+    <% if user_signed_in? %>
     <div class="total-price">
-      <span> Total = 900 $ </span>
+        <span> Total = 900 $ </span>
     </div>
+      <%= simple_form_for [@camel, @booking] do |f| %>
+        <%= f.input :date_start, as: :date, order: [:day, :month, :year] %>
+        <%= f.input :date_end, as: :date, order: [:day, :month, :year] %>
+        <%= f.submit "Bouc your camel", class: "btn btn-primary" %>
+      <% end %>
+    <% else %>
+      <div class="Info-login text-center">
+        <div class="info">
+        You need to be logged to rent a Camel.
+        </div>
+        <div class="path-redirect">
+        <%= link_to "login", new_user_session_path, class: "btn btn-primary btn-lg" %>
+        </div>
+      </div>
+    <% end %>
   </div>
 
 </div>
