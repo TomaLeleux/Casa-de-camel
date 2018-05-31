@@ -50,7 +50,7 @@ class BookingsController < ApplicationController
       redirect_to dashboard_path
     else
       @booking.update(booking_params)
-      redirect_to camel_bookings_path(@booking.camel)
+      redirect_to bookings_path
     end
   end
 
