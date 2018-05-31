@@ -31,10 +31,10 @@
         <span id="total"></span>
     </div>
       <%= simple_form_for [@camel, @booking] do |f| %>
-        <%= f.input :date_start, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y')} %>
-        <%= f.input :date_end, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y'), 'data-date-dates-disabled': @book } %>
+        <%= f.input :date_start, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y')} %>
+        <%= f.input :date_end, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') } %>
         <%= f.submit "Bouc your camel", class: "btn btn-primary" %>
-
+<!-- 'data-date-dates-disabled': @book -->
       <% end %>
     <% else %>
       <div class="Info-login text-center">
