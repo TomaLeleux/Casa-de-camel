@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path
     else
-      render camel_path(@camel)
+      render "camels/show"
     end
   end
 

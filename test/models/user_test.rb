@@ -17,6 +17,8 @@
 #  updated_at             :datetime         not null
 #  admin                  :boolean
 #  photo                  :string
+#  first_name             :string
+#  last_name              :string
 #
 
 require 'test_helper'

@@ -4,11 +4,14 @@ class CamelsController < ApplicationController
 
 
   def index
-    @camels = policy_scope(Camel).order(created_at: :desc)
-    @camelsMap = Camel.where.not(latitude: nil, longitude: nil)
-
+    if params[:query].present?
+      @camels = policy_scope(Camel.global_search(params[:query]))
+      @camelsMap = @camels
+    else
+      @camels = policy_scope(Camel).order(created_at: :desc)
+      @camelsMap = Camel.where.not(latitude: nil, longitude: nil)
+    end
     @markers = @camelsMap.map do |camel|
-
       {
         lat: camel.latitude,
         lng: camel.longitude
