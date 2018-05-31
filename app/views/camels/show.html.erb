@@ -48,10 +48,9 @@
     <% end %>
   </div>
 
-  <div>
+  <div class="map">
     <%= cl_image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@camel.latitude}, #{@camel.longitude}&zoom=16&size=600x300&maptype=hybrid&markers=color:red%7Clabel:C%7C#{@camel.latitude}, #{@camel.longitude}&key=AIzaSyCGd4LW3sY44cZqiXGYPVJzlI2iCcMkfks" %>
-
-</div>
+  </div>
 
   <div>
     <div class="edit_camel">
