@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>TODO</title>
+    <%= Gon::Base.render_data %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -26,11 +27,26 @@
 
 
     <script>
+      function da(d){
+      unavailableDates = gon.book;
+       var year = d.getFullYear(),
+            month = ("0" + (d.getMonth() + 1)).slice(-2),
+            day = ("0" + (d.getDate())).slice(-2);
+
+        var formatted = day + '/' + month + '/' + year;
+        var formatted = formatted.toString();
+        if (unavailableDates.includes(formatted)) {
+            return false;
+        } else{
+            return true;
+        }
+    }
       $('.datepicker').datepicker({
     format: 'dd/mm/yyyy',
     startDate: '0',
     autoclose: true,
-    todayHighlight: true
+    todayHighlight: true,
+    beforeShowDay: da
 });
     </script>
   </body>

@@ -27,7 +27,15 @@ class CamelsController < ApplicationController
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     @booking = Booking.new
-    @book = BookedDate.new(Date.new(2018,06,01),Date.new(2018,06,10)).set_range
+    @book = []
+    booked = @camel.bookings
+    booked.each do |book|
+      begindate = book.date_start
+      enddate = book.date_end
+      @book << (BookedDate.new(Date.new(begindate.year,begindate.month,begindate.day),Date.new(enddate.year,enddate.month,enddate.day))).set_range
+      end
+    @book = @book.flatten
+    gon.book = @book
 
   end
 
