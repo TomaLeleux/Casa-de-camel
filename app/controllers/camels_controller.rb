@@ -19,6 +19,13 @@ class CamelsController < ApplicationController
 
   def show
     @camel = policy_scope(Camel).find(params[:id])
+
+    @markers =
+      {
+        lat: @camel.latitude,
+        lng: @camel.longitude
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+      }
     @booking = Booking.new
   end
 
@@ -58,7 +65,7 @@ class CamelsController < ApplicationController
   def camel_params
     params.require(:camel).permit(:name, :country, :number_of_place, :food_type,
                                   :color, :wifi, :chameaux_fiscaux, :vitesse_max, :photo,
-                                  :description, :price_per_day, :address)
+                                  :description, :price_per_day, :address, :latitude, :longitude)
   end
 
   def set_camel

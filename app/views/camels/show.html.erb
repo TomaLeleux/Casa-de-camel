@@ -11,9 +11,7 @@
 
     <div class="price"> <%= @camel.price_per_day %> $</div>
   </div>
-  <div class="map">
-    <%= image_tag "http://images.indianexpress.com/2016/11/hazaribagh-759.jpg" %>
-  </div>
+
   <div class="carac">
 
     <i class="fas fa-users"> Places : <%= @camel.number_of_place %> </i>
@@ -48,6 +46,11 @@
       </div>
     <% end %>
   </div>
+
+  <div>
+    <%= cl_image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@camel.latitude}, #{@camel.longitude}&zoom=16&size=600x300&maptype=hybrid&markers=color:red%7Clabel:C%7C#{@camel.latitude}, #{@camel.longitude}&key=AIzaSyCGd4LW3sY44cZqiXGYPVJzlI2iCcMkfks" %>
+
+</div>
 
   <div>
     <div class="edit_camel">
