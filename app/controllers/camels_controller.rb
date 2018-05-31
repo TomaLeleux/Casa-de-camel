@@ -27,6 +27,8 @@ class CamelsController < ApplicationController
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     @booking = Booking.new
+    @book = BookedDate.new(Date.new(2018,06,01),Date.new(2018,06,10)).set_range
+
   end
 
   def new
