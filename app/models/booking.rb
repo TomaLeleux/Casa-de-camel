@@ -31,8 +31,8 @@ class Booking < ApplicationRecord
   end
 
   def start_date_after_today
-    if date_start.present? && date_start <= Date.today
-      errors.add(:date_start, "can't be the same day or in the past")
+    if date_start.present? && date_start < Date.today
+      errors.add(:date_start, "can't be in the past")
     end
   end
 end
