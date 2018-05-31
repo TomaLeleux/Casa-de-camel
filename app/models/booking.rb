@@ -21,4 +21,18 @@ class Booking < ApplicationRecord
   validates :date_end, presence: true, allow_blank: false
   validates :user_id, presence: true
   validates :camel_id, presence: true
+  validate  :end_date_after_start_date
+  validate  :start_date_after_today
+
+  def end_date_after_start_date
+    if date_start.present? && date_end.present? && date_end < date_start
+      errors.add(:date_end, "can't be before the start date")
+    end
+  end
+
+  def start_date_after_today
+    if date_start.present? && date_start <= Date.today
+      errors.add(:date_start, "can't be the same day or in the past")
+    end
+  end
 end
