@@ -23,6 +23,8 @@
 #
 
 class Camel < ApplicationRecord
+  include PgSearch
+
   belongs_to :user
   has_many :bookings
   mount_uploader :photo, PhotoUploader
@@ -33,4 +35,13 @@ class Camel < ApplicationRecord
   validates :price_per_day, presence: true
   validates :description, presence: true
   validates :address, presence: true
+
+  pg_search_scope :global_search,
+    against: [ :name, :country, :address ],
+    associated_against: {
+      user: [ :first_name, :last_name ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end

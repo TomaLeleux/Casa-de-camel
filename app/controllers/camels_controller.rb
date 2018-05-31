@@ -4,11 +4,14 @@ class CamelsController < ApplicationController
 
 
   def index
-    @camels = policy_scope(Camel).order(created_at: :desc)
-    @camelsMap = Camel.where.not(latitude: nil, longitude: nil)
-
+    if params[:query].present?
+      @camels = policy_scope(Camel.global_search(params[:query]))
+      @camelsMap = @camels
+    else
+      @camels = policy_scope(Camel).order(created_at: :desc)
+      @camelsMap = Camel.where.not(latitude: nil, longitude: nil)
+    end
     @markers = @camelsMap.map do |camel|
-
       {
         lat: camel.latitude,
         lng: camel.longitude
@@ -27,7 +30,15 @@ class CamelsController < ApplicationController
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     @booking = Booking.new
-    @book = BookedDate.new(Date.new(2018,06,01),Date.new(2018,06,10)).set_range
+    @book = []
+    booked = @camel.bookings
+    booked.each do |book|
+      begindate = book.date_start
+      enddate = book.date_end
+      @book << (BookedDate.new(Date.new(begindate.year,begindate.month,begindate.day),Date.new(enddate.year,enddate.month,enddate.day))).set_range
+      end
+    @book = @book.flatten
+    gon.book = @book
 
   end
 
