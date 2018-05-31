@@ -27,10 +27,31 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    authorize @booking
+    @book = []
+    booked = Booking.where.not(id: @booking.id)
+    booked.each do |book|
+      begindate = book.date_start
+      enddate = book.date_end
+      @book << (BookedDate.new(Date.new(begindate.year,begindate.month,begindate.day),Date.new(enddate.year,enddate.month,enddate.day))).set_range
+    end
+    @book = @book.flatten
+    gon.book = @book
+  end
+
   def update
     authorize @booking
-    @booking.update(booking_params)
-    redirect_to camel_bookings_path(@booking.camel)
+    if params[:commit] == 'Accept' && current_user == @booking.camel.user
+      @booking.update(status: 'validated')
+      redirect_to dashboard_path
+    elsif params[:commit] == 'Refuse' && current_user == @booking.camel.user
+      @booking.update(status: 'declined')
+      redirect_to dashboard_path
+    else
+      @booking.update(booking_params)
+      redirect_to bookings_path
+    end
   end
 
   def destroy
