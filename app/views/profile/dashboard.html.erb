@@ -22,6 +22,14 @@
               <br>
               End date: <%= date_end %>
             </p>
+            <% if booking.status == 'pending' %>
+              <%= simple_form_for booking do |f| %>
+                <%= f.submit "Accept", class: 'cbtn btn-success' %>
+              <% end %>
+              <%= simple_form_for booking do |f| %>
+                <%= f.submit "Refuse", class: 'cbtn btn-danger' %>
+              <% end %>
+            <% end %>
           </div>
         <% end %>
       <% end %>

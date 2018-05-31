@@ -22,7 +22,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user == user || record.camel.user == user
   end
 
   def destroy?

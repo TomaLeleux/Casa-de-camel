@@ -15,6 +15,10 @@
           Start date: <%= date_start %>
           <br>
           End date: <%= date_end %>
+          <br>
+        <% if booking.status == 'pending' %>
+          <%= link_to "Edit dates", edit_booking_path(booking), class: "btn btn-primary" %>
+        <% end %>
         </p>
       </div>
   <% end %>

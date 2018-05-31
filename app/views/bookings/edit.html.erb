@@ -1,0 +1,6 @@
+<h1>Edit your booking</h1>
+
+<%= simple_form_for @booking do |f| %>
+  <%= f.input :date_start, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') } %>
+  <%= f.input :date_end, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') } %>
+<% end %>
