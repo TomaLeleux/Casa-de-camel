@@ -17,9 +17,10 @@
 #  photo            :string
 #  price_per_day    :integer
 #  description      :text
-#. address          :text
-#  latitute         :float
-#  longitude.       :float
+#  latitude         :float
+#  longitude        :float
+#  address          :string
+#
 
 class Camel < ApplicationRecord
   belongs_to :user

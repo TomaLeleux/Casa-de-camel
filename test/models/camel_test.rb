@@ -17,6 +17,9 @@
 #  photo            :string
 #  price_per_day    :integer
 #  description      :text
+#  latitude         :float
+#  longitude        :float
+#  address          :string
 #
 
 require 'test_helper'
