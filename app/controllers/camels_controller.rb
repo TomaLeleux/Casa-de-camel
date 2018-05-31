@@ -20,6 +20,8 @@ class CamelsController < ApplicationController
   def show
     @camel = policy_scope(Camel).find(params[:id])
     @booking = Booking.new
+    @book = BookedDate.new(Date.new(2018,06,01),Date.new(2018,06,10)).set_range
+
   end
 
   def new
