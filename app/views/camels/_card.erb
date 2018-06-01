@@ -7,9 +7,33 @@
     <div class="card-description">
       <h2><%= camel.name %></h2>
       <p><%= camel.description %></p>
+      <% rating = 0 %>
+      <% camel.reviews.each do |review| %>
+        <% rating += review.rating %>
+      <% end %>
+      <% if camel.reviews.count > 0 && rating > 0 %>
+        <% average = (rating / camel.reviews.count) %>
+        <% diff = 5 - average %>
+        <% rating.modulo(camel.reviews.count) > 0.49 ? fraction = 0.5 : fraction = 0 %>
+        <% average.times do |x| %>
+          <i class="fa fa-star rating text-center"></i>
+        <% end %>
+        <% if fraction == 0 %>
+          <% diff.times do |y| %>
+            <i class="fa fa-star-o rating text-center"></i>
+          <% end %>
+        <% else %>
+          <i class="fa fa-star-half-o rating text-center"></i>
+          <i class="fa fa-star-o rating text-center"></i>
+        <% end %>
+      <% else %>
+        <% 5.times do |x| %>
+          <i class="fa fa-star-o rating text-center"></i>
+        <% end %>
+      <% end %>
     </div>
     <% if camel.user.photo.blank? %>
-      <i class="card-user fas fa-user"></i>
+      <i class="card-user fa fa-user"></i>
     <% else %>
       <%= cl_image_tag camel.user.photo, class: 'card-user', alt: 'User logo' %>
     <% end %>

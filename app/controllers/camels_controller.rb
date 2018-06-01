@@ -22,6 +22,7 @@ class CamelsController < ApplicationController
 
   def show
     @camel = policy_scope(Camel).find(params[:id])
+    @review = Review.new
 
     @markers =
       {

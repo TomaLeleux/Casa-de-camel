@@ -63,4 +63,15 @@
     </div>
 
   </div>
+
+  <div id="reviews">
+    <% if @camel.reviews.blank? %>
+      Be the first to leave a review for <%= @camel.name %>
+    <% else %>
+      <% @camel.reviews.each do |review| %>
+        <%= render 'reviews/show', review: review %>
+      <% end %>
+    <% end %>
+  </div>
+  <%= render 'reviews/form', camel: @camel, review: @review %>
 </div>
