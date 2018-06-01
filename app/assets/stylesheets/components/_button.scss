@@ -2,8 +2,8 @@
 text-decoration: none;
 border: solid 1px;
 border-radius: 4px;
-// display: block;
-padding: 6px 16px;
+display: inline-block;
+padding: 9px 16px;
 width: 200px;
 color: white;
 box-shadow: 2px 2px 2px 1px rgba(181, 96, 43, 0.2);
@@ -28,6 +28,9 @@ box-shadow: 2px 2px 2px 1px rgba(181, 96, 43, 0.2);
   @include btncolor($camel);
 }
 
+.blue {
+  @include btncolor($bluecam);
+}
 // @mixin box-gradient($from, $to, $weight: 0) {
 //   $mix-main: mix($from, $to);
 //   $mix-sub-from: mix($mix-main, $from);

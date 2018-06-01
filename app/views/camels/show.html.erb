@@ -11,19 +11,18 @@
 
       <div class="price"> <%= @camel.price_per_day %> $</div>
     </div>
-
+<h3>Options :</h3>
     <div class="carac">
-
-      <i class="fas fa-users"> Places : <%= @camel.number_of_place %> </i>
-      <i class="fab fa-apple"> Food Type: <%= @camel.food_type %></i>
-      <i class="fas fa-paint-brush"> Color: <%= @camel.color %> </i>
+      <i class="fas fa-users"><span> Places : <%= @camel.number_of_place %> </span></i>
+      <i class="fab fa-apple"><span> Food Type: <%= @camel.food_type %></span></i>
+      <i class="fas fa-paint-brush"><span> Color: <%= @camel.color %> </span></i>
       <% if @camel.wifi %>
-      <i class="fas fa-wifi"> Wifi</i>
+      <i class="fas fa-wifi"><span> Wifi</span></i>
       <% else %>
-      <i class="fas fa-times-circle"> No Wifi </i>
+      <i class="fas fa-times-circle"><span> No Wifi </span></i>
       <% end %>
-      <i class="fas fa-battery-three-quarters">Fiscal camels : <%= @camel.chameaux_fiscaux %> fc</i>
-      <i class="fab fa-accessible-icon">Max speed : <%= @camel.vitesse_max %> kmh</i>
+      <i class="fas fa-battery-three-quarters"><span>Fiscal camels : <%= @camel.chameaux_fiscaux %> fc</span></i>
+      <i class="fab fa-accessible-icon"><span>Max speed : <%= @camel.vitesse_max %> kmh</span></i>
     </div>
     <div class="booking">
       <% if user_signed_in? %>
@@ -44,7 +43,7 @@
           <%= f.input :date_start, as: :string,label: 'You will start riding :', input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y')} %>
           <%= f.input :date_end, as: :string,label: 'Camel be back :', input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') } %>
            <div class="text-center">
-          <%= f.submit "Bouc your camel", class: "btn btn-primary" %>
+          <%= f.submit "Bouc your camel", class: "cbtn blue" %>
           </div>
         </div>
         <% end %>
@@ -71,7 +70,17 @@
     </div>
 
     <div class="map">
+      <div class="find-me">
+        <div class="flexbox">
+          <div class="flex-item-1">
+            <i class="fas fa-location-arrow"></i>
+          </div>
+          <div class="flex-item-2">
+            <%= @camel.address %>
+          </div>
+        </div>
       <%= cl_image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@camel.latitude}, #{@camel.longitude}&zoom=16&size=600x300&maptype=hybrid&markers=color:red%7Clabel:C%7C#{@camel.latitude}, #{@camel.longitude}&key=AIzaSyCGd4LW3sY44cZqiXGYPVJzlI2iCcMkfks" %>
+      </div>
     </div>
 
   </div>

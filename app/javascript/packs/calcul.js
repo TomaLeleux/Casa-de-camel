@@ -10,6 +10,6 @@ function calculPrice(d1, d2, price){
   console.log('pricing :' + pricing);
 }
 
-// export { calculPrice }
+export { calculPrice }
 
 // calculPrice(new Date(2018,1,2),new Date(2018,4,5),1)
