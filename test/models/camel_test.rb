@@ -20,6 +20,7 @@
 #  latitude         :float
 #  longitude        :float
 #  address          :string
+#  average          :float
 #
 
 require 'test_helper'

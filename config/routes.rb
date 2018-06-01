@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :camels, except: [:destroy] do
     resources :bookings, only: [:new, :create]
+    resources :reviews, only: [:create]
   end
   get '/bookings', to: 'bookings#index', as: 'bookings'
   get '/user', to: 'profile#show', as: 'user'
