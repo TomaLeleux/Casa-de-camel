@@ -23,7 +23,7 @@ class Booking < ApplicationRecord
   validates :camel_id, presence: true
   validate  :end_date_after_start_date
   validate  :start_date_after_today
-  validate :no_booking_in_booking
+  validate  :no_booking_in_booking
 
   def end_date_after_start_date
     if date_start.present? && date_end.present? && date_end < date_start
@@ -42,9 +42,8 @@ class Booking < ApplicationRecord
     bookings = Booking.where(camel: camel)
     bookings.each do |booking|
       dates_booked = BookedDate.new(booking.date_start, booking.date_end).set_range
-      if is_included?(dates, dates_booked)
-        errors.add(:date_start, "can't book if the camel is booked during this period")
-        errors.add(:date_end, "can't book if the camel is booked during this period")
+      if is_included?(dates, dates_booked) && errors[:base].empty?
+        errors.add(:base, "Can't book if the camel is booked during this period")
       end
     end
   end
@@ -52,9 +51,7 @@ class Booking < ApplicationRecord
   private
 
   def is_included?(to_check, target)
-    p "to_check: #{to_check}"
     target.each do |string|
-      p "string: #{string}"
       return true if to_check.include? string
     end
     false

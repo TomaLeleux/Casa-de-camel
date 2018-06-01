@@ -2,6 +2,15 @@
   <h1>Edit your booking</h1>
 
   <%= simple_form_for @booking do |f| %>
+    <% unless @booking.errors[:base].empty? %>
+      <div class="base-errors-container">
+        <ul>
+          <% @booking.errors[:base].each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <%= f.input :date_start, as: :string, input_html: { class: "datepicker", value: @booking.date_start.strftime('%d/%m/%Y') } %>
     <%= f.input :date_end, as: :string, input_html: { class: "datepicker", value: @booking.date_end.strftime('%d/%m/%Y') } %>
     <%= f.submit 'Save changes', class: 'btn btn-primary' %>
