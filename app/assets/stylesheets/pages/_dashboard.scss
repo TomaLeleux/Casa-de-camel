@@ -4,13 +4,13 @@
 }
 
 .my-camel {
+  width: 30%;
   h2 {
     display: inline-block;
   }
 }
 
 .booked-user{
-  margin-left: 50px;
   margin-bottom: 15px;
 }
 
@@ -20,5 +20,31 @@
 
 .cbtn-edit {
   width: 50px;
+}
+
+.book {
+  border-top: solid 1px #ededde;
+  padding-left: 50px;
+}
+
+@media (max-width: 1200px) {
+  .my-camel {
+    width: 50%;
+  }
+}
+
+@media (max-width: 747px) {
+  .my-camel {
+    width: 75%;
+  }
+}
+
+@media (max-width: 500px) {
+  .my-camel {
+    width: 100%;
+  }
+  .book {
+    padding: 5px;
+  }
 }
 

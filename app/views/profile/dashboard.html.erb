@@ -14,26 +14,30 @@
           <p>No bookings yet for this camel.</p>
         <% else %>
           <% camel.bookings.each do |booking| %>
-            <% date_start = booking.date_start.strftime('%A, %-d %B %Y') %>
-            <% date_end = booking.date_end.strftime('%A, %-d %B %Y') %>
-            <div class="booked-user">
-              <h5><%= booking.user.email %> <span class="status <%= booking.status %>"><%= booking.status %></span> <span class="price-total"><%= booking.get_booking_price %>€</span></h5>
-              <p class="book-date">
-                Start date: &emsp;<%= date_start %>
-                <br>
-                End date: &emsp;<%= date_end %>
-              </p>
-              <% if booking.status == 'pending' %>
-                <div class="validate">
-                  <%= simple_form_for booking do |f| %>
-                    <%= f.submit "Accept", class: 'cbtn btn-success' %>
-                  <% end %>
-                  <%= simple_form_for booking do |f| %>
-                    <%= f.submit "Refuse", class: 'cbtn btn-danger' %>
-                  <% end %>
-                </div>
-              <% end %>
+          <div class="row">
+            <div class="book">
+              <% date_start = booking.date_start.strftime('%A, %-d %B %Y') %>
+              <% date_end = booking.date_end.strftime('%A, %-d %B %Y') %>
+              <div class="booked-user">
+                <h5><%= booking.user.email %> <span class="status <%= booking.status %>"><%= booking.status %></span> <span class="price-total"><%= booking.get_booking_price %>€</span></h5>
+                <p class="book-date">
+                  Start date: &emsp;<%= date_start %>
+                  <br>
+                  End date: &emsp;<%= date_end %>
+                </p>
+                <% if booking.status == 'pending' %>
+                  <div class="validate">
+                    <%= simple_form_for booking do |f| %>
+                      <%= f.submit "Accept", class: 'cbtn btn-success' %>
+                    <% end %>
+                    <%= simple_form_for booking do |f| %>
+                      <%= f.submit "Refuse", class: 'cbtn btn-danger' %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
             </div>
+          </div>
           <% end %>
         <% end %>
       </div>

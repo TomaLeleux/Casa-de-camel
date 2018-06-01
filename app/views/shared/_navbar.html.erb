@@ -62,27 +62,33 @@
 
         <% if user_signed_in? %>
           <li>
-          <%= link_to "/users/sign_out", method: :delete do %>
-            <i class="fas fa-sign-out-alt"></i> <%= t(".logout", default: "Logout") %>
+            <%= link_to dashboard_path do %>
+              <i class="fa fa-list-alt"></i> <%= t(".dashboard", default: "Dashboard") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to bookings_path do %>
+            <i class="fa fa-address-book"></i> <%= t(".booking", default: "Booking") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <i class="fa fa-cog"></i> <%= t(".account", default: "Account") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i> <%= t(".logout", default: "Logout") %>
+            <% end %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to new_user_session_path do %>
+            <i class="fa fa-sign-in"></i> <%= t(".Login", default: "Login") %>
+            <% end %>
+          </li>
+
           <% end %>
-          </li>
-          <li>
-            <%= link_to "#" do %>
-              <i class="fas fa-shopping-cart"></i> <%= t(".booking", default: "Booking") %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "#" do %>
-              <i class="fas fa-box-open"></i> <%= t(".camels", default: "Camel-Case") %>
-            <% end %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "/users/sign_in" do %>
-              <i class="fas fa-sign-in-alt"></i> <%= t(".Login", default: "Login") %>
-            <% end %>
-          </li>
-        <% end %>
 
       </ul>
     </div>
