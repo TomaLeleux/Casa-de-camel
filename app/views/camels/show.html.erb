@@ -11,7 +11,6 @@
 
       <div class="price"><span id="price"><%= @camel.price_per_day %></span> $</div>
     </div>
-<h3>Options :</h3>
     <div class="carac">
       <i class="fas fa-users"><span> Places : <%= @camel.number_of_place %> </span></i>
       <i class="fab fa-apple"><span> Food Type: <%= @camel.food_type %></span></i>
@@ -82,17 +81,18 @@
       <%= cl_image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@camel.latitude}, #{@camel.longitude}&zoom=16&size=600x300&maptype=hybrid&markers=color:red%7Clabel:C%7C#{@camel.latitude}, #{@camel.longitude}&key=AIzaSyCGd4LW3sY44cZqiXGYPVJzlI2iCcMkfks" %>
       </div>
     </div>
-
+    <div class="reviews">
+      <div id="reviews">
+        <% if @camel.reviews.blank? %>
+          Be the first to leave a review for <%= @camel.name %>
+        <% else %>
+          <% @camel.reviews.each do |review| %>
+            <%= render 'reviews/show', review: review %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= render 'reviews/form', camel: @camel, review: @review %>
+      </div>
   </div>
-
-  <div id="reviews">
-    <% if @camel.reviews.blank? %>
-      Be the first to leave a review for <%= @camel.name %>
-    <% else %>
-      <% @camel.reviews.each do |review| %>
-        <%= render 'reviews/show', review: review %>
-      <% end %>
-    <% end %>
-  </div>
-  <%= render 'reviews/form', camel: @camel, review: @review %>
 </div>
+
