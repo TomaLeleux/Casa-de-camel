@@ -1,13 +1,18 @@
 
 <h1>Camehamemel</h1>
+
+<div class="wrap">
+
 <div class="search-bar">
-  <%= form_tag camels_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find something"
-    %>
-  <% end %>
+  <div class="bar">
+    <%= form_tag camels_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control searchTerm",
+        placeholder: "What are you looking for?"
+      %>
+    <% end %>
+  </div>
 </div>
 <div>
 <% @camels.each do |camel| %>
