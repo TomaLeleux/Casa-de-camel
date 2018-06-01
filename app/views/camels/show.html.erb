@@ -9,7 +9,7 @@
       <%= @camel.description %>
       <h3>Price / Day </h3>
 
-      <div class="price"> <%= @camel.price_per_day %> $</div>
+      <div class="price"><span id="price"><%= @camel.price_per_day %></span> $</div>
     </div>
 <h3>Options :</h3>
     <div class="carac">
@@ -26,9 +26,6 @@
     </div>
     <div class="booking">
       <% if user_signed_in? %>
-      <div class="total-price">
-          <span id="total"></span>
-      </div>
         <div class="date-container">
         <%= simple_form_for [@camel, @booking] do |f| %>
           <% unless @booking.errors[:base].empty? %>
@@ -40,8 +37,11 @@
               </ul>
             </div>
           <% end %>
-          <%= f.input :date_start, as: :string,label: 'You will start riding :', input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y')} %>
-          <%= f.input :date_end, as: :string,label: 'Camel be back :', input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') } %>
+          <%= f.input :date_start, as: :string,label: 'You will start riding :', input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y')} %>
+          <%= f.input :date_end, as: :string,label: 'Camel be back :', input_html: { class: "datepicker", value: Time.now.strftime('%d-%m-%Y') } %>
+           <div class="text-center pricing">
+             Total price : <span id="totalo"><%= @camel.price_per_day %> €</span>
+           </div>
            <div class="text-center">
           <%= f.submit "Bouc your camel", class: "cbtn blue" %>
           </div>
