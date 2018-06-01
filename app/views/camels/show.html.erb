@@ -30,6 +30,7 @@
       <div class="total-price">
           <span id="total"></span>
       </div>
+        <div class="date-container">
         <%= simple_form_for [@camel, @booking] do |f| %>
           <% unless @booking.errors[:base].empty? %>
             <div class="base-errors-container">
@@ -40,10 +41,12 @@
               </ul>
             </div>
           <% end %>
-          <%= f.input :date_start, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y')} %>
-          <%= f.input :date_end, as: :string, input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') } %>
+          <%= f.input :date_start, as: :string,label: 'You will start riding :', input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y')} %>
+          <%= f.input :date_end, as: :string,label: 'Camel be back :', input_html: { class: "datepicker", value: Time.now.strftime('%d/%m/%Y') } %>
+           <div class="text-center">
           <%= f.submit "Bouc your camel", class: "btn btn-primary" %>
-  <!-- 'data-date-dates-disabled': @book -->
+          </div>
+        </div>
         <% end %>
       <% else %>
         <div class="Info-login text-center">
@@ -55,7 +58,7 @@
           </div>
         </div>
       <% end %>
-      <div>
+      <div class="text-center">
         <div class="edit_camel">
           <% if policy(@camel).edit? %>
             <%= link_to "Edit #{@camel.name}", edit_camel_path, class: "cbtn camel" %>
