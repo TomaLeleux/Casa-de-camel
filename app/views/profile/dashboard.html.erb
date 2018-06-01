@@ -1,38 +1,46 @@
-<h1>My camels</h1>
+<div class="dashboard">
+  <h1>My camels</h1>
 
-<%= link_to "Add a camel", new_camel_path, class: "cbtn camel" %>
+  <%= link_to "Add a camel", new_camel_path, class: "cbtn camel text-center" %>
 
-<% current_user.camels.each do |camel| %>
-  <div class="my-camel">
-    <h2><%= camel.name %></h2>
-    <%= link_to edit_camel_path(camel), class: 'cbtn btn-primary' do %>
-      <i class="fa fa-edit"></i>
-    <% end %>
-    <div class="bookings">
-      <% if camel.bookings.size.zero? %>
-        <p>No bookings yet for this camel.</p>
-      <% else %>
-        <% camel.bookings.each do |booking| %>
-          <% date_start = booking.date_start.strftime('%A, %-d %B %Y') %>
-          <% date_end = booking.date_end.strftime('%A, %-d %B %Y') %>
-          <div class="booked-user">
-            <h5><%= booking.user.email %> <span class="status <%= booking.status %>"><%= booking.status %></span></h5>
-            <p class="book-date">
-              Start date: <%= date_start %>
-              <br>
-              End date: <%= date_end %>
-            </p>
-            <% if booking.status == 'pending' %>
-              <%= simple_form_for booking do |f| %>
-                <%= f.submit "Accept", class: 'cbtn btn-success' %>
-              <% end %>
-              <%= simple_form_for booking do |f| %>
-                <%= f.submit "Refuse", class: 'cbtn btn-danger' %>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
+  <% current_user.camels.each do |camel| %>
+    <div class="my-camel">
+      <h2><%= camel.name %></h2>
+      <%= link_to edit_camel_path(camel), class: 'cbtn btn-primary cbtn-edit' do %>
+        <i class="fa fa-edit"></i>
       <% end %>
+      <div class="bookings">
+        <% if camel.bookings.size.zero? %>
+          <p>No bookings yet for this camel.</p>
+        <% else %>
+          <% camel.bookings.each do |booking| %>
+          <div class="row">
+            <div class="book">
+              <% date_start = booking.date_start.strftime('%A, %-d %B %Y') %>
+              <% date_end = booking.date_end.strftime('%A, %-d %B %Y') %>
+              <div class="booked-user">
+                <h5><%= booking.user.email %> <span class="status <%= booking.status %>"><%= booking.status %></span> <span class="price-total"><%= booking.get_booking_price %>€</span></h5>
+                <p class="book-date">
+                  Start date: &emsp;<%= date_start %>
+                  <br>
+                  End date: &emsp;<%= date_end %>
+                </p>
+                <% if booking.status == 'pending' %>
+                  <div class="validate">
+                    <%= simple_form_for booking do |f| %>
+                      <%= f.submit "Accept", class: 'cbtn btn-success' %>
+                    <% end %>
+                    <%= simple_form_for booking do |f| %>
+                      <%= f.submit "Refuse", class: 'cbtn btn-danger' %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

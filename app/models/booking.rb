@@ -57,4 +57,17 @@ class Booking < ApplicationRecord
     end
     false
   end
+
+  public
+
+  def get_booking_price
+    ppd = camel.price_per_day
+    ppd * days_between_date
+  end
+
+  private
+
+  def days_between_date
+    (date_end - date_start + 1).to_i
+  end
 end
