@@ -14,8 +14,12 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
+    <div>
     <%= yield %>
+    </div>
+    <div>
     <%= render 'shared/footer' %>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
@@ -36,7 +40,7 @@
             month = ("0" + (d.getMonth() + 1)).slice(-2),
             day = ("0" + (d.getDate())).slice(-2);
 
-        var formatted = day + '/' + month + '/' + year;
+        var formatted = day + '-' + month + '-' + year;
         var formatted = formatted.toString();
         if (unavailableDates.includes(formatted)) {
             return false;
@@ -46,7 +50,7 @@
     }
       $('.datepicker').datepicker({
     startDate: '0',
-    format: 'dd/mm/yyyy',
+    format: 'dd-mm-yyyy',
     autoclose: true,
     beforeShowDay: da,
     todayHighlight: true
