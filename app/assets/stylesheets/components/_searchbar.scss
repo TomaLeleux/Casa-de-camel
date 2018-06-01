@@ -1,9 +1,24 @@
-.search-bar{
+.search-bar {
   width: 100%;
-  text-align: center;
+  position: relative;
   padding: 10px;
   background-color: $camel;
   * {
     width: 500px;
+    margin: auto;
   }
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 50px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
 }
