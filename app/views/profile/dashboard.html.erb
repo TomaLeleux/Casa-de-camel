@@ -17,7 +17,7 @@
             <% date_start = booking.date_start.strftime('%A, %-d %B %Y') %>
             <% date_end = booking.date_end.strftime('%A, %-d %B %Y') %>
             <div class="booked-user">
-              <h5><%= booking.user.email %> <span class="status <%= booking.status %>"><%= booking.status %></span></h5>
+              <h5><%= booking.user.email %> <span class="status <%= booking.status %>"><%= booking.status %></span> <span class="price-total"><%= booking.get_booking_price %>€</span></h5>
               <p class="book-date">
                 Start date: &emsp;<%= date_start %>
                 <br>

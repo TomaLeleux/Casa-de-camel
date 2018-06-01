@@ -41,6 +41,7 @@ class Booking < ApplicationRecord
     dates = BookedDate.new(date_start, date_end).set_range
     bookings = Booking.where(camel: camel)
     bookings.each do |booking|
+      next if booking == self
       dates_booked = BookedDate.new(booking.date_start, booking.date_end).set_range
       if is_included?(dates, dates_booked) && errors[:base].empty?
         errors.add(:base, "Can't book if the camel is booked during this period")
@@ -55,5 +56,18 @@ class Booking < ApplicationRecord
       return true if to_check.include? string
     end
     false
+  end
+
+  public
+
+  def get_booking_price
+    ppd = camel.price_per_day
+    ppd * days_between_date
+  end
+
+  private
+
+  def days_between_date
+    (date_end - date_start + 1).to_i
   end
 end
