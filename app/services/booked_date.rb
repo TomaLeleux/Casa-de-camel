@@ -19,7 +19,6 @@ class BookedDate
       if m.to_s.length == 1
         m = "0#{m}"
       end
-      p "#{d}/#{m}/#{y}"
       @range_date << "#{d}/#{m}/#{y}"
       actual_date += 1
     end
