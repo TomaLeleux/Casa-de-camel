@@ -2,7 +2,10 @@
 // document.getElementById("booking_date_start_i3").addEventListener("click", (event) => {
 
 // })
-
+document.getElementById('booking_date_start').addEventListener('change', (event)=>{
+  const dateSelected = document.getElementById('booking_date_start').value;
+  console.log(dateSelected);
+});
 
 function calculPrice(d1, d2, price){
   const d4 = new Number((d2 - d1)/ 86400000);

@@ -36,7 +36,7 @@
             month = ("0" + (d.getMonth() + 1)).slice(-2),
             day = ("0" + (d.getDate())).slice(-2);
 
-        var formatted = day + '/' + month + '/' + year;
+        var formatted = day + '-' + month + '-' + year;
         var formatted = formatted.toString();
         if (unavailableDates.includes(formatted)) {
             return false;
@@ -46,7 +46,7 @@
     }
       $('.datepicker').datepicker({
     startDate: '0',
-    format: 'dd/mm/yyyy',
+    format: 'dd-mm-yyyy',
     autoclose: true,
     beforeShowDay: da,
     todayHighlight: true
