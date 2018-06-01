@@ -49,8 +49,11 @@ class BookingsController < ApplicationController
       @booking.update(status: 'declined')
       redirect_to dashboard_path
     else
-      @booking.update(booking_params)
-      redirect_to bookings_path
+      if @booking.update(booking_params)
+        redirect_to bookings_path
+      else
+        render :edit
+      end
     end
   end
 
