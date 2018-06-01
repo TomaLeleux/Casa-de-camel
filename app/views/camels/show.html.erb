@@ -13,16 +13,16 @@
     </div>
 <h3>Options :</h3>
     <div class="carac">
-      <i class="fas fa-users"><span> Places : <%= @camel.number_of_place %> </span></i>
-      <i class="fab fa-apple"><span> Food Type: <%= @camel.food_type %></span></i>
-      <i class="fas fa-paint-brush"><span> Color: <%= @camel.color %> </span></i>
+      <i class="fa fa-users"><span> Places : <%= @camel.number_of_place %> </span></i>
+      <i class="fa fa-apple"><span> Food Type: <%= @camel.food_type %></span></i>
+      <i class="fa fa-paint-brush"><span> Color: <%= @camel.color %> </span></i>
       <% if @camel.wifi %>
-      <i class="fas fa-wifi"><span> Wifi</span></i>
+      <i class="fa fa-wifi"><span> Wifi</span></i>
       <% else %>
-      <i class="fas fa-times-circle"><span> No Wifi </span></i>
+      <i class="fa fa-times-circle"><span> No Wifi </span></i>
       <% end %>
-      <i class="fas fa-battery-three-quarters"><span>Fiscal camels : <%= @camel.chameaux_fiscaux %> fc</span></i>
-      <i class="fab fa-accessible-icon"><span>Max speed : <%= @camel.vitesse_max %> kmh</span></i>
+      <i class="fa fa-battery-three-quarters"><span>Fiscal camels : <%= @camel.chameaux_fiscaux %> fc</span></i>
+      <i class="fa fa-wheelchair-alt"><span>Max speed : <%= @camel.vitesse_max %> kmh</span></i>
     </div>
     <div class="booking">
       <% if user_signed_in? %>
@@ -73,7 +73,7 @@
       <div class="find-me">
         <div class="flexbox">
           <div class="flex-item-1">
-            <i class="fas fa-location-arrow"></i>
+            <i class="fa fa-location-arrow"></i>
           </div>
           <div class="flex-item-2">
             <%= @camel.address %>
